@@ -1,27 +1,32 @@
 import 'package:go_router/go_router.dart';
 
+import 'screens/error/error_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/home/home_screen.dart';
 
 final GoRouter route = GoRouter(
-    initialLocation: '/',
-    redirect: (context, state) {
-      if ('state author' == 'true') {
-        return '/home';
-      }
-      return null;
-    },
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) {
-          return LoginScreen();
-        },
-      ),
-      GoRoute(
-        path: '/home',
-        builder: (context, state) {
-          return const HomeScreen();
-        },
-      )
-    ]);
+  initialLocation: '/',
+  redirect: (context, state) {
+    if ('state author' == 'true') {
+      return '/home';
+    }
+    return null;
+  },
+  routes: [
+    GoRoute(
+      name: 'login',
+      path: '/',
+      builder: (context, state) {
+        return const LoginScreen();
+      },
+    ),
+    GoRoute(
+      name: 'home',
+      path: '/home',
+      builder: (context, state) {
+        return const HomeScreen();
+      },
+    )
+  ],
+  errorBuilder: (context, state) => const ErrorScreen(),
+);

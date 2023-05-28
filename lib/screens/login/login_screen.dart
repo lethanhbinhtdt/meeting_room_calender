@@ -10,9 +10,7 @@ class LoginScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _loginFormKey = GlobalKey<FormState>();
-    final _registerFormKey = GlobalKey<FormState>();
-    final isLogin = useState(false);
+    final isLogin = useState(true);
     return MaterialApp(
       builder: (context, child) {
         return Scaffold(
@@ -29,11 +27,6 @@ class LoginScreen extends HookWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // const Icon(
-                      //   Icons.login,
-                      //   size: 48,
-                      //   color: Color.fromARGB(255, 113, 129, 253),
-                      // ),
                       Image.asset('images/logoNoneBackground.png'),
                       const Text('ISV Việt Nam',
                           style: TextStyle(
@@ -41,16 +34,12 @@ class LoginScreen extends HookWidget {
                               fontSize: 36,
                               fontWeight: FontWeight.bold)),
                       isLogin.value
-                          ? LoginFrom(
-                              loginFormKey: _loginFormKey,
-                              changeScreen: () {
-                                isLogin.value = false;
-                              })
-                          : RegisterForm(
-                              registerFormKey: _registerFormKey,
-                              changeScreen: () {
-                                isLogin.value = true;
-                              }),
+                          ? LoginFrom(changeScreen: () {
+                              isLogin.value = false;
+                            })
+                          : RegisterForm(changeScreen: () {
+                              isLogin.value = true;
+                            }),
                     ]),
               ),
             ),

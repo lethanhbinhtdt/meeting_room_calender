@@ -3,15 +3,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class RegisterForm extends HookConsumerWidget {
-  const RegisterForm(
-      {required this.registerFormKey, required this.changeScreen, Key? key})
-      : super(key: key);
+  const RegisterForm({required this.changeScreen, Key? key}) : super(key: key);
   final Function() changeScreen;
-  final GlobalKey<FormState> registerFormKey;
 
   final mainColors = const Color.fromARGB(255, 77, 97, 252);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final registerFormKey = GlobalKey<FormState>();
     final accFocusNode = useFocusNode();
     final passFocusNode = useFocusNode();
     final rePassFocusNode = useFocusNode();

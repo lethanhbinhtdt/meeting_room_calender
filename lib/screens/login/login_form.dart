@@ -3,20 +3,18 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoginFrom extends HookConsumerWidget {
-  LoginFrom({required this.loginFormKey, required this.changeScreen, Key? key})
-      : super(key: key);
+  const LoginFrom({required this.changeScreen, Key? key}) : super(key: key);
   final Function() changeScreen;
-  final GlobalKey<FormState> loginFormKey;
-  final _formKey = GlobalKey<FormState>();
 
   final mainColors = const Color.fromARGB(255, 77, 97, 252);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final loginFormKey = GlobalKey<FormState>();
     final isRemember = useState(false);
     final accFocusNode = useFocusNode();
     final passFocusNode = useFocusNode();
     return Form(
-        key: _formKey,
+        key: loginFormKey,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
@@ -63,7 +61,7 @@ class LoginFrom extends HookConsumerWidget {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Row(
                   children: [
                     Checkbox(
@@ -73,9 +71,14 @@ class LoginFrom extends HookConsumerWidget {
                         isRemember.value = value!;
                       },
                     ),
-                    const Text(
-                      'nhớ tài khoản?',
-                      style: TextStyle(fontSize: 16),
+                    InkWell(
+                      onTap: () {
+                        isRemember.value = !isRemember.value;
+                      },
+                      child: const Text(
+                        'nhớ tài khoản?',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                     const Spacer(),
                     InkWell(
@@ -92,7 +95,7 @@ class LoginFrom extends HookConsumerWidget {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: mainColors),
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (loginFormKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text('Kiểm tra thông tin...')));
                     }
@@ -105,7 +108,7 @@ class LoginFrom extends HookConsumerWidget {
                     ),
                   )),
               Padding(
-                padding: const EdgeInsets.only(top: 32.0),
+                padding: const EdgeInsets.only(top: 24.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
