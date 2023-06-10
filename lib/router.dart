@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'screens/error/error_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/pages/events_example.dart';
 
 final GoRouter route = GoRouter(
   initialLocation: '/',
@@ -24,7 +25,7 @@ final GoRouter route = GoRouter(
       name: 'home',
       path: '/home',
       builder: (context, state) {
-        return const HomeScreen();
+        return TableEventsExample();
       },
     )
   ],
