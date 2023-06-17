@@ -19,21 +19,21 @@ class RegisterForm extends HookConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
             children: [
-              const Text('Đăng ký tài khoản',
+              const Text('Create account!',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 85, 61, 95), fontSize: 20)),
+                      color: Color.fromARGB(255, 85, 61, 95), fontSize: 16)),
               TextFormField(
                 focusNode: accFocusNode,
                 cursorColor: mainColors,
                 decoration: InputDecoration(
-                    labelText: 'Tài khoản',
+                    labelText: 'Username',
                     labelStyle: TextStyle(
                         color: accFocusNode.hasFocus ? mainColors : null),
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: mainColors))),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Vui lòng nhập tài khoản';
+                    return 'Please enter username';
                   }
                   return null;
                 },
@@ -45,7 +45,7 @@ class RegisterForm extends HookConsumerWidget {
                 focusNode: passFocusNode,
                 cursorColor: mainColors,
                 decoration: InputDecoration(
-                    labelText: 'Mật khẩu',
+                    labelText: 'Password',
                     labelStyle: TextStyle(
                         color: passFocusNode.hasFocus ? mainColors : null),
                     focusedBorder: UnderlineInputBorder(
@@ -55,7 +55,7 @@ class RegisterForm extends HookConsumerWidget {
                 autocorrect: false,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Vui lòng nhập mật khẩu';
+                    return 'Please enter password';
                   }
                   return null;
                 },
@@ -67,7 +67,7 @@ class RegisterForm extends HookConsumerWidget {
                 focusNode: rePassFocusNode,
                 cursorColor: mainColors,
                 decoration: InputDecoration(
-                    labelText: 'Nhập lại mật khẩu',
+                    labelText: 'Re-type Password',
                     labelStyle: TextStyle(
                         color: passFocusNode.hasFocus ? mainColors : null),
                     focusedBorder: UnderlineInputBorder(
@@ -77,7 +77,7 @@ class RegisterForm extends HookConsumerWidget {
                 autocorrect: false,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Vui lòng nhập lại mật khẩu';
+                    return 'Please Re-type password';
                   }
                   return null;
                 },
@@ -89,16 +89,16 @@ class RegisterForm extends HookConsumerWidget {
                   style: ElevatedButton.styleFrom(backgroundColor: mainColors),
                   onPressed: () {
                     if (registerFormKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text('Kiểm tra thông tin...')));
+                      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      //     content: Text('Kiểm tra thông tin...')));
                       changeScreen();
                     }
                   },
                   child: const Padding(
                     padding: EdgeInsets.all(12.0),
                     child: Text(
-                      'Đăng Ký',
-                      style: TextStyle(fontSize: 18),
+                      'Submit',
+                      style: TextStyle(fontSize: 16),
                     ),
                   )),
               Padding(
@@ -107,15 +107,15 @@ class RegisterForm extends HookConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Đã có tài khoản?',
-                      style: TextStyle(fontSize: 16),
+                      'Already have an account?',
+                      style: TextStyle(fontSize: 14),
                     ),
                     InkWell(
                       onTap: changeScreen,
                       child: const Text(
-                        ' Đăng nhập',
+                        ' Login',
                         style:
-                            TextStyle(fontSize: 16, color: Colors.blueAccent),
+                            TextStyle(fontSize: 14, color: Colors.blueAccent),
                       ),
                     )
                   ],

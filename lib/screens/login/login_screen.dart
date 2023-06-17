@@ -19,8 +19,8 @@ class LoginScreen extends HookWidget {
                 const BoxDecoration(color: Color.fromARGB(255, 241, 241, 241)),
             child: Center(
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.75,
-                height: MediaQuery.of(context).size.height * 0.75,
+                width: MediaQuery.of(context).size.width * 0.85,
+                height: MediaQuery.of(context).size.height * 0.65,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(4)),
@@ -28,10 +28,10 @@ class LoginScreen extends HookWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset('images/logoNoneBackground.png'),
-                      const Text('ISV Việt Nam',
+                      const Text('ISV Viet Nam',
                           style: TextStyle(
                               color: Color.fromARGB(255, 85, 61, 95),
-                              fontSize: 36,
+                              fontSize: 32,
                               fontWeight: FontWeight.bold)),
                       isLogin.value
                           ? LoginFrom(changeScreen: () {

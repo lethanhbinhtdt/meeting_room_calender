@@ -29,8 +29,8 @@ final _kEventSource = Map.fromIterable(List.generate(50, (index) => index),
         item % 4 + 1, (index) => Event('Event $item | ${index + 1}')))
   ..addAll({
     kToday: [
-      Event('Today\'s Event 1'),
-      Event('Today\'s Event 2'),
+      Event('11:00 - 12:00  |  Team 1  |  meeting with FPT'),
+      Event('15:30 - 16:30  |  Team 3  |  team meeting'),
     ],
   });
 
@@ -47,6 +47,6 @@ List<DateTime> daysInRange(DateTime first, DateTime last) {
   );
 }
 
-final kToday = DateTime.now();
+final kToday = DateTime.now().add(Duration(days: -1));
 final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
 final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);

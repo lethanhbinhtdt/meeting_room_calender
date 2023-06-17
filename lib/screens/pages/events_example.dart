@@ -86,7 +86,7 @@ class _TableEventsExampleState extends State<TableEventsExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Table Calendar'),
+        title: Text('Calendar'),
         actions: [
           IconButton(
               onPressed: () {
